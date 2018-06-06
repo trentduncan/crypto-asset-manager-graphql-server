@@ -20,7 +20,7 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-mongoose.connect('mongodb://localhost/blog-app-graphql');
+mongoose.connect('mongodb://localhost/crypto-graphql');
 const db = mongoose.connection;
 db.on('error', ()=> {console.log( '---FAILED to connect to mongoose');});
 db.once('open', () => {

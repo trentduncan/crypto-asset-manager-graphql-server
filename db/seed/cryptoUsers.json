@@ -1,0 +1,17 @@
+[
+    {
+        "username": "user1",
+        "password": "123",
+        "coins": ["BTC", "ETH", "LTC"]
+    },
+    {
+        "username": "user2",
+        "password": "123",
+        "coins": ["BTC", "NXS"]
+    },
+    {
+        "username": "user3",
+        "password": "123",
+        "coins": ["ETH", "NAS"]
+    }
+]
