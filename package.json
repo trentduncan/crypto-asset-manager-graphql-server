@@ -1,0 +1,14 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "blog app graphql server",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Trent Duncan",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^0.13.2"
+  }
+}
