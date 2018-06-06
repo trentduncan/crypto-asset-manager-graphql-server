@@ -1,0 +1,56 @@
+[
+    {
+        "firstName": "Trent",
+        "lastName": "Duncan",
+        "posts": [
+            {
+                "title": "Post number 1",
+                "content": "Extremely valuable content"
+            },
+            {
+                "title": "Post number 2",
+                "content": "Extremely valuable content 2"
+            },
+            {
+                "title": "Post number 3",
+                "content": "Extremely valuable content 3"
+            }
+        ]
+    },
+    {
+        "firstName": "Cody",
+        "lastName": "Gillette",
+        "posts": [
+            {
+                "title": "Post number 1",
+                "content": "Extremely valuable content"
+            },
+            {
+                "title": "Post number 2",
+                "content": "Extremely valuable content 2"
+            },
+            {
+                "title": "Post number 3",
+                "content": "Extremely valuable content 3"
+            }
+        ]
+    },
+    {
+        "firstName": "Jayson",
+        "lastName": "Price",
+        "posts": [
+            {
+                "title": "Post number 1",
+                "content": "Extremely valuable content"
+            },
+            {
+                "title": "Post number 2",
+                "content": "Extremely valuable content 2"
+            },
+            {
+                "title": "Post number 3",
+                "content": "Extremely valuable content 3"
+            }
+        ]
+    }
+]
