@@ -27,6 +27,7 @@ const schema = buildSchema(`
     getUser(username: String): User
     getTop10(sort: String): [Ticker]
     getUserCoins(id: ID): [Ticker]
+    searchCoins(Symbol: String): [Coin]
   }
 
   type Ticker {
@@ -48,7 +49,7 @@ const schema = buildSchema(`
   type Coin {
     id: Int
     symbol: String
-    amount: Float
+    price: Float
   }
 `);
 

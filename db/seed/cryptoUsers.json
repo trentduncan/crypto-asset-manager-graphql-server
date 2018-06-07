@@ -3,7 +3,7 @@
         "username": "user1",
         "password": "123",
         "coins": [
-            {"BTC": 1, "id": 1},
+            {"amount": 1, "name": "Bitcoin","symbol": "BTC", "id": 1},
             {"ETH": 1, "id": 1027},
             {"LTC": 1, "id": 2}
         ]
