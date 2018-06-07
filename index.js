@@ -4,11 +4,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const schema = require('./schema');
 const bodyParser = require('body-parser');
-const { graphqlExpress }=  require('apollo-server-express');
+const { graphqlExpress, graphiqlExpress }=  require('apollo-server-express');
 
 
 const app = express();
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
 mongoose.connect('mongodb://localhost/crypto-graphql');
 const db = mongoose.connection;

@@ -2,6 +2,7 @@
 
 const fetch = require('node-fetch');
 const CryptoUser = require('../models/cryptoUser');
+const CachedData = require('../models/cachedData');
 
 function convertTop10Data(incObj) {
   const result = [];
@@ -51,9 +52,22 @@ async function userCoins(_, {id}) {
   return result;
 }
 
+async function searchCoins(_, {symbol, id}) {
+  const currentUser = await CryptoUser.findOne({id});
+  const {timeStamp} = currentUser;
+//   if (!timeStamp) {
+    const coinData = await fetch('https://api.coinmarketcap.com/v2/listings/');
+    const json = coinData.json();
+    const result = await CachedData.insertMany(json);
+    console.log(result);
+    return result;
+//   }
+
+}
 
 
 module.exports = {
     top10,
-    userCoins
+    userCoins,
+    searchCoins
 }

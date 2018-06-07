@@ -1,7 +1,7 @@
 'use strict';
 
 const { makeExecutableSchema }= require('graphql-tools');
-const {top10, userCoins} = require('./resolvers/queries');
+const {top10, userCoins, searchCoins} = require('./resolvers/queries');
 
 const typeDefs = `
     type Query {
@@ -9,7 +9,7 @@ const typeDefs = `
     users(username: String): User
     top10(sort: String): [Ticker]
     userCoins(id: ID): [Ticker]
-    searchCoins(Symbol: String): [Coin]
+    searchCoins(symbol: String, id: ID): [Coin]
     }
 
     type Ticker {
@@ -51,7 +51,8 @@ const resolvers = {
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers
+  resolvers,
+  searchCoins
 });
 
 
