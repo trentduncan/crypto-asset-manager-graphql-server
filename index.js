@@ -5,12 +5,16 @@ const graphqlHTTP = require('express-graphql');
 const mongoose = require('mongoose');
 const schema = require('./schema');
 
+const {getTop10, getUserCoins} = require('./resolvers/queries');
+
 
 // The root provides a resolver function for each API endpoint
 const root = {
   hello: () => {
     return 'Hello world!';
   },
+  getTop10,
+  getUserCoins
 };
 
 const app = express();

@@ -29,11 +29,13 @@ const schema = buildSchema(`
   }
 
   type Ticker {
+    id: ID
     name: String
     symbol: String
-    change1h: Int
-    change24h: Int
-    change7d: Int
+    price: Float
+    change1h: Float
+    change24h: Float
+    change7d: Float
   }
 
   type User {
@@ -45,7 +47,7 @@ const schema = buildSchema(`
   type Coin {
     id: Int
     symbol: String
-    amount: Int
+    amount: Float
   }
 `);
 
