@@ -26,6 +26,7 @@ const schema = buildSchema(`
     hello: String
     getUser(username: String): User
     getTop10(sort: String): [Ticker]
+    getUserCoins(id: ID): [Ticker]
   }
 
   type Ticker {
