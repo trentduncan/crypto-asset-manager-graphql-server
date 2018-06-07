@@ -32,14 +32,14 @@ function convertSingleObj(incObj) {
     return obj
 }
 
-async function getTop10({sort}) {
+async function top10(_, {sort}) {
   const res = await fetch(`https://api.coinmarketcap.com/v2/ticker/?limit=10&sort=${sort}`);
   const json = await res.json();
   const result = convertTop10Data(json);
   return result;
 }
 
-async function getUserCoins({id}) {
+async function userCoins(_, {id}) {
   const user = await CryptoUser.findOne({_id: id});
   const result = [];
   for (const item of user.coins) {
@@ -54,6 +54,6 @@ async function getUserCoins({id}) {
 
 
 module.exports = {
-    getTop10,
-    getUserCoins
+    top10,
+    userCoins
 }

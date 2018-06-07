@@ -1,36 +1,18 @@
 'use strict';
 
-const { buildSchema } = require('graphql');
+const { makeExecutableSchema }= require('graphql-tools');
+const {top10, userCoins} = require('./resolvers/queries');
 
-// Construct a schema, using GraphQL schema language
-// const schema = buildSchema(`
-//   type Query {
-//     hello: String
-//   }
-//   type User {
-//     id: ID
-//     firstName: String!
-//     lastName: String!
-//     posts: [Post]
-//   }
-
-//   type Post {
-//     id: ID
-//     title: String
-//     content: String
-//     author: User
-//   }
-// `);
-const schema = buildSchema(`
-  type Query {
+const typeDefs = `
+    type Query {
     hello: String
-    getUser(username: String): User
-    getTop10(sort: String): [Ticker]
-    getUserCoins(id: ID): [Ticker]
+    users(username: String): User
+    top10(sort: String): [Ticker]
+    userCoins(id: ID): [Ticker]
     searchCoins(Symbol: String): [Coin]
-  }
+    }
 
-  type Ticker {
+    type Ticker {
     id: ID
     name: String
     symbol: String
@@ -38,19 +20,38 @@ const schema = buildSchema(`
     change1h: Float
     change24h: Float
     change7d: Float
-  }
+    }
 
-  type User {
+    type User {
     id: ID
     username: String!
     coins: [Coin]
-  }
+    }
 
-  type Coin {
+    type Coin {
     id: Int
     symbol: String
     price: Float
+    }
+`;
+
+const resolvers = {
+  Query : {
+    hello: () => {
+      return 'Hello world!';
+    },
+    top10,
+    userCoins
   }
-`);
+};
+
+
+
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers
+});
+
+
 
 module.exports = schema;
