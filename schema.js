@@ -31,9 +31,11 @@ const typeDefs = `
     type Coin {
     id: Int
     symbol: String
-    price: Float
+    name: String
+    amount: Int
     }
 `;
+
 
 const resolvers = {
   Query : {

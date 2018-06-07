@@ -6,7 +6,8 @@ const bcrypt = require('bcryptjs');
 const cryptoUserSchema = new mongoose.Schema({
   username: { type: String},
   password: {type: String},
-  coins: { type: Array }
+  coins: { type: Array },
+  timeStamp: { type: Number}
 });
 
 cryptoUserSchema.set('toObject', {
