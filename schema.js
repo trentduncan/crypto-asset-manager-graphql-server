@@ -14,7 +14,7 @@ const typeDefs = `
     }
 
     type Mutation {
-      addCoin(userId : ID, id: Int, symbol: String, name: String, amount: Float ): Coin
+      addCoin(userId : ID, id: Int, symbol: String, name: String, amount: Float ): User
     }
 
     type Ticker {
