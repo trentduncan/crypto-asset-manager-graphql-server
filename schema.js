@@ -8,13 +8,18 @@ const typeDefs = `
     type Query {
       hello: String
       users(username: String): User
-      top10(sort: String): [Ticker]
-      userCoins(id: ID): [Ticker]
-      searchCoins(symbol: String, id: ID): [Coin]
+      top10(sort: Sort): [Ticker]
+      userCoins: [Ticker]
+      searchCoins(symbol: String): [Coin]
     }
 
     type Mutation {
-      addCoin(userId : ID, id: Int, symbol: String, name: String, amount: Float ): User
+      addCoin(id: Int, symbol: String, name: String, amount: Float ): User
+    }
+    
+    enum Sort{
+      rank
+      percent_change_24h
     }
 
     type Ticker {

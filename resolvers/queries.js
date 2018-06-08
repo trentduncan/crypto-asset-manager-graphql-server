@@ -40,8 +40,8 @@ async function top10(_, {sort}) {
   return result;
 }
 
-async function userCoins(_, {id}) {
-  const user = await CryptoUser.findOne({_id: id});
+async function userCoins() {
+  const user = await CryptoUser.findOne({_id: "5b1a91ee42389646cdd90051"});
   const result = [];
   for (const item of user.coins) {
     let res = await fetch(`https://api.coinmarketcap.com/v2/ticker/${item.id}/`);
@@ -52,8 +52,8 @@ async function userCoins(_, {id}) {
   return result;
 }
 
-async function searchCoins(_, {symbol, id}) {
-  const currentUser = await CryptoUser.findOne({_id: id});
+async function searchCoins(_, {symbol}) {
+  const currentUser = await CryptoUser.findOne({_id: "5b1a91ee42389646cdd90051"});
   const {timeStamp} = currentUser;
   const currentTime = Date.now()/1000;
   console.log(timeStamp, currentTime);
@@ -63,7 +63,7 @@ async function searchCoins(_, {symbol, id}) {
     const json = await coinData.json();
     console.log('hit');
     const result = await CachedData.insertMany(json.data);
-    await CryptoUser.findByIdAndUpdate({_id: id}, {$set: {timeStamp: currentTime}})
+    await CryptoUser.findByIdAndUpdate({_id: "5b1a91ee42389646cdd90051"}, {$set: {timeStamp: currentTime}})
   }
   symbol = symbol.toUpperCase();
   let searchData = await CachedData.find({symbol});
@@ -73,7 +73,7 @@ async function searchCoins(_, {symbol, id}) {
   }
   return searchData;
 }
-
+// use redis to store timestamp
 
 
 

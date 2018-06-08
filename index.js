@@ -4,10 +4,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const schema = require('./schema');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { graphqlExpress, graphiqlExpress }=  require('apollo-server-express');
 
 
 const app = express();
+app.use(cors());
+
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
 app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
@@ -19,4 +22,4 @@ db.once('open', () => {
   console.log( '+++Connected to mongoose');
 });
 app.listen(4000);
-console.log('Running a GraphQL API server at localhost:4000/graphql');
+console.log('Running a GraphQL API server at localhost:4000/graphiql');
