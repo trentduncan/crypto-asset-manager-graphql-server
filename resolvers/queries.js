@@ -67,7 +67,7 @@ async function searchCoins(_, {symbol, id}) {
   }
   symbol = symbol.toUpperCase();
   let searchData = await CachedData.find({symbol});
-  if (!searchData) {
+  if (searchData.length === 0) {
     const re = new RegExp(symbol, 'i');
     searchData = await CachedData.find({symbol: { $regex: re }}); 
   }
