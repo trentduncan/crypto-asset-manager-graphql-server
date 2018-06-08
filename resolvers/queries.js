@@ -53,17 +53,28 @@ async function userCoins(_, {id}) {
 }
 
 async function searchCoins(_, {symbol, id}) {
-  const currentUser = await CryptoUser.findOne({id});
+  const currentUser = await CryptoUser.findOne({_id: id});
   const {timeStamp} = currentUser;
-//   if (!timeStamp) {
+  const currentTime = Date.now()/1000;
+  console.log(timeStamp, currentTime);
+  if (!timeStamp || currentTime - timeStamp > 600) {
+    await CachedData.remove({});
     const coinData = await fetch('https://api.coinmarketcap.com/v2/listings/');
-    const json = coinData.json();
-    const result = await CachedData.insertMany(json);
-    console.log(result);
-    return result;
-//   }
-
+    const json = await coinData.json();
+    console.log('hit');
+    const result = await CachedData.insertMany(json.data);
+    await CryptoUser.findByIdAndUpdate({_id: id}, {$set: {timeStamp: currentTime}})
+  }
+  symbol = symbol.toUpperCase();
+  let searchData = await CachedData.find({symbol});
+  if (!searchData) {
+    const re = new RegExp(symbol, 'i');
+    searchData = await CachedData.find({symbol: { $regex: re }}); 
+  }
+  return searchData;
 }
+
+
 
 
 module.exports = {

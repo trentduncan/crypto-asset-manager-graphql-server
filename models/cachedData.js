@@ -5,8 +5,7 @@ const mongoose = require('mongoose');
 const cachedDataSchema = new mongoose.Schema({
   symbol: {type: String},
   name: {type: String},
-  amount: {type: Number},
-  coinId: {type: Number}
+  id: {type: Number}
 });
 
 cachedDataSchema.set('toObject', {

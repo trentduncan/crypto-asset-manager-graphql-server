@@ -43,7 +43,8 @@ const resolvers = {
       return 'Hello world!';
     },
     top10,
-    userCoins
+    userCoins,
+    searchCoins
   }
 };
 
@@ -51,8 +52,7 @@ const resolvers = {
 
 const schema = makeExecutableSchema({
   typeDefs,
-  resolvers,
-  searchCoins
+  resolvers
 });
 
 
