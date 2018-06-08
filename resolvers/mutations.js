@@ -8,6 +8,7 @@ async function addCoin(_, {userId, id, symbol, amount, name}) {
   return updatedUser;
 }
 
+
 // grab user push new object to collection
 
 module.exports = {
