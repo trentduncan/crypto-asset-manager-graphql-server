@@ -23,13 +23,14 @@ const typeDefs = `
     }
 
     type Ticker {
-      id: ID
+      id: Int
       name: String
       symbol: String
       price: Float
       change1h: Float
       change24h: Float
       change7d: Float
+      amount: Float
     }
 
     type User {

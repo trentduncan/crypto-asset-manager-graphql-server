@@ -47,6 +47,7 @@ async function userCoins() {
     let res = await fetch(`https://api.coinmarketcap.com/v2/ticker/${item.id}/`);
     const json = await res.json();
     let convertedCoinData = convertSingleObj(json);
+    convertedCoinData.amount = item.amount;
     result.push(convertedCoinData);
   }
   return result;
